@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <Button
+        android:id="@+id/const_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="콘스트레인트" />
+
+    <Button
+        android:id="@+id/linear_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="리니어" />
+
+    <Button
+        android:id="@+id/relative_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="릴레이티브" />
+
+    <Button
+        android:id="@+id/intent_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="인텐트 예제" />
+
+    <Button
+        android:id="@+id/widjetButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="다양한 위젯과 리스너" />
+</LinearLayout>
