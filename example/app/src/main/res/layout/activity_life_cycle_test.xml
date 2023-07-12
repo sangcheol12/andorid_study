@@ -6,7 +6,7 @@
     android:background="#ffffff"
     android:orientation="vertical"
     android:gravity="center"
-    tools:context=".CameraTest">
+    tools:context=".SMSTest">
     <Button
         android:id="@+id/destroyButton"
         android:layout_width="wrap_content"
