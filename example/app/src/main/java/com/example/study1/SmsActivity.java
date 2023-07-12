@@ -3,35 +3,52 @@ package com.example.study1;
 import static android.content.ContentValues.TAG;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.camera.view.PreviewView;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
+import android.Manifest;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.util.Log;
-import android.hardware.camera2.*;
-import android.view.SurfaceHolder;
-import android.view.SurfaceView;
-import android.view.ViewGroup;
-
-import com.google.common.util.concurrent.ListenableFuture;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.ExecutionException;
 
-public class CameraTest extends AppCompatActivity{
-    private static final String[] REQUIRED_RUNTIME_PERMISSIONS = new String[] {android.Manifest.permission.CAMERA,};
+public class SmsActivity extends AppCompatActivity {
+
+    EditText editText1, editText2, editText3;
+    private static final String[] REQUIRED_RUNTIME_PERMISSIONS = new String[] {Manifest.permission.RECEIVE_SMS,};
     private static final int PERMISSION_REQUESTS = 1;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_camera_test);
+        setContentView(R.layout.activity_sms);
+
+        editText1 = findViewById(R.id.editText1);
+        editText2 = findViewById(R.id.editText2);
+        editText3 = findViewById(R.id.editText3);
+
+        Button bt = findViewById(R.id.button);
+
+        bt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+
         if (!allRuntimePermissionsGranted()) {
             getRuntimePermissions();
         }
+
+        Intent passedIntent = getIntent();
+        processIntent(passedIntent);
     }
     private boolean allRuntimePermissionsGranted() {
         for (String permission : REQUIRED_RUNTIME_PERMISSIONS) {
@@ -59,5 +76,25 @@ public class CameraTest extends AppCompatActivity{
         }
         Log.i(TAG, "Permission NOT granted: " + permission);
         return false;
+    }
+    @Override
+    protected void onNewIntent(Intent intent) {
+        processIntent(intent);
+
+        super.onNewIntent(intent);
+    }
+
+    private void processIntent(Intent intent) {
+
+        if(intent != null){
+            String sender = intent.getStringExtra("sender");
+            String contents = intent.getStringExtra("contents");
+            String receivedDate = intent.getStringExtra("receivedDate");
+
+            editText1.setText(sender);
+            editText2.setText(contents);
+            editText3.setText(receivedDate);
+
+        }
     }
 }

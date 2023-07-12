@@ -11,11 +11,11 @@
     tools:context=".MainActivity">
 
     <Button
-        android:id="@+id/cameraBtn"
+        android:id="@+id/smsBtn"
         android:layout_width="150dp"
         android:layout_height="80dp"
         android:layout_gravity="center"
-        android:text="camera"
+        android:text="SMS"
         android:layout_marginRight="50dp"/>
     <Button
         android:id="@+id/lifeCycleBtn"
